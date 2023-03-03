@@ -6,7 +6,7 @@ Angular learning project with Spring Boot backend + log4j + security +++
 
 ## Installation
 
-#### pgAdmin:
+### pgAdmin:
 - start it running in localhost:3331
 ```bash
 docker pull dpage/pgadmin4
@@ -18,8 +18,14 @@ docker run --name pgAdminContainer -p 3331:80 \
     -e 'PGADMIN_CONFIG_CONSOLE_LOG_LEVEL=10' \
     -d dpage/pgadmin4
 ```
+Check the ip of your postgres container:
+```bash
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container-name>
+```
+Then just add the postgres db details to pgAdmin (the ip, password etc).
 
-#### How to start the backend
+
+### How to start the backend
 - use docker postgres image
 - docker exec -it \<CONTAINER-ID\> bin/bash
 - psql -U postgres
