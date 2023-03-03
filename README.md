@@ -42,10 +42,13 @@ ng new \<projectname\>
 -- Then you can start the backend
 
 ### Run frontend
+
 ```bash
-ng serve <projectname>
+cd <projectname>
+ng serve  / npm run start
 ```
 And go to: http://localhost:\<ip-in-app-properties\>/
+
 
 
 #### Logs
