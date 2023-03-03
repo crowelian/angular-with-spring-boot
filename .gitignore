@@ -56,3 +56,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Hide Logs ###
+**/*.log.gz

@@ -1,7 +1,8 @@
 # angular-with-spring-boot
 Learning angular with spring boot.
 
-
+## Description
+Angular learning project with Spring Boot backend + log4j + security +++
 
 ## Installation
 
@@ -18,4 +19,14 @@ docker run --name pgAdminContainer -p 3331:80 \
     -d dpage/pgadmin4
 ```
 
+#### How to start the backend
+- use docker postgres image
+- docker exec -it \<CONTAINER-ID\> bin/bash
+- psql -U postgres
+- CREATE DATABASE angulardemodb;
+--- Then you can start the backend
+
+
+#### Logs
+- http://localhost:8080/logs
 
