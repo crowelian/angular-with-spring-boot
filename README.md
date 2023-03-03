@@ -25,12 +25,27 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <co
 Then just add the postgres db details to pgAdmin (the ip, password etc).
 
 
+### Angular
+Init a new scaffolfing for Angular project
+```bash
+ng new \<projectname\>
+```
+
+## Usage
+
 ### How to start the backend
 - use docker postgres image
 - docker exec -it \<CONTAINER-ID\> bin/bash
 - psql -U postgres
 - CREATE DATABASE angulardemodb;
---- Then you can start the backend
+
+-- Then you can start the backend
+
+### Run frontend
+```bash
+ng serve <projectname>
+```
+And go to: http://localhost:\<ip-in-app-properties\>/
 
 
 #### Logs
