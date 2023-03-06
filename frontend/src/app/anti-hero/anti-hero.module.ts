@@ -12,6 +12,8 @@ import {MatCardModule} from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { AntiHeroEffects } from './state/anti-hero.effects';
+import { StoreModule } from '@ngrx/store';
+import { antiHeroReducer } from './state/anti-hero.reducers';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { AntiHeroEffects } from './state/anti-hero.effects';
     ReactiveFormsModule,
     MaterialModule,
     MatCardModule,
-    EffectsModule.forFeature([AntiHeroEffects])
+    EffectsModule.forFeature([AntiHeroEffects]),
+    StoreModule.forFeature('antiHeroState', antiHeroReducer), // register our reducers in the store, first param is key second is returned from the createReducer
   ]
 })
 export class AntiHeroModule { }
