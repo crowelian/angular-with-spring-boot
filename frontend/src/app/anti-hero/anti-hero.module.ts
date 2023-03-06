@@ -10,6 +10,8 @@ import { AntiHeroCommandBarComponent } from './components/anti-hero-command-bar/
 import { MaterialModule } from '../material/material.module';
 import {MatCardModule} from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
+import { AntiHeroEffects } from './state/anti-hero.effects';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AntiHeroRoutingModule,
     ReactiveFormsModule,
     MaterialModule,
-    MatCardModule
+    MatCardModule,
+    EffectsModule.forFeature([AntiHeroEffects])
   ]
 })
 export class AntiHeroModule { }
