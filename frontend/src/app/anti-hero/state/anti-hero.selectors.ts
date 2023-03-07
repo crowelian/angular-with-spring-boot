@@ -1,6 +1,4 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { AppState } from 'src/app/state/app.state';
-import { AntiHero } from '../models/anti-hero.interface';
 import { AntiHeroState } from './anti-hero.reducers';
 
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TableActions } from '../../enums/table-actions.enum';
 import { AntiHero } from '../../models/anti-hero.interface';
 
@@ -9,11 +9,11 @@ import { AntiHero } from '../../models/anti-hero.interface';
 })
 export class AntiHeroListComponent implements OnInit {
   @Input() headers: Array<{headerName: string, fieldName: keyof AntiHero}> = [];
-  @Input() antiHeroes: Array<AntiHero> = [];
-  @Output() antiHero = new EventEmitter<{antiHero: AntiHero, action: TableActions}>();
+  @Input() antiHeroes: ReadonlyArray<AntiHero> = [];
+  @Output() antiHero = new EventEmitter<{antiHero: AntiHero, action :TableActions}>();
   headerFields: string[] = [];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     this.getHeaderFields();
@@ -24,7 +24,7 @@ export class AntiHeroListComponent implements OnInit {
     this.headerFields.push("actions");
   }
 
-  selectAntiHeroItem(antiHero: AntiHero, action: TableActions) {
+  selectAntiHero(antiHero: AntiHero, action: TableActions) {
     this.antiHero.emit({antiHero, action});
   }
 

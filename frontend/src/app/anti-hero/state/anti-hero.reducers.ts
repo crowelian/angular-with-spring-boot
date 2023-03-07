@@ -1,17 +1,44 @@
 import { createReducer, on } from '@ngrx/store';
 import { AntiHero } from '../models/anti-hero.interface';
-import { setAntiHeroList } from './anti-hero.actions';
+import {
+  addAntiHeroState,
+  modifyAntiHeroState,
+  removeAllAntiHeroState,
+  removeAntiHeroState,
+  setAntiHeroList,
+} from './anti-hero.actions';
 
-export interface AntiHeroState { // defines the properties of the state
-    antiHeroes: ReadonlyArray<AntiHero>;
+export interface AntiHeroState {
+  antiHeroes: ReadonlyArray<AntiHero>;
 }
 
-export const initialState: AntiHeroState = { // initial state and the current ACTION
-    antiHeroes: []
-}
+export const initialState: AntiHeroState = {
+  antiHeroes: [],
+};
 
-export const antiHeroReducer = createReducer( 
+export const antiHeroReducer = createReducer(
   initialState,
-  on(setAntiHeroList, (state, { antiHeroes }) => { return {...state, antiHeroes}}), // list of functions that handle state changes based on the dispatched actions
-
+  on(setAntiHeroList, (state, { antiHeroes }) => {
+    return { ...state, antiHeroes };
+  }),
+  on(removeAntiHeroState, (state, { antiHeroId }) => {
+    return {
+      ...state,
+      antiHeroes: state.antiHeroes.filter((data) => data.id != antiHeroId),
+    };
+  }),
+  on(addAntiHeroState, (state, { antiHero }) => {
+    return { ...state, antiHeroes: [...state.antiHeroes, antiHero] };
+  }),
+  on(modifyAntiHeroState, (state, { antiHero }) => {
+    return {
+      ...state,
+      antiHeroes: state.antiHeroes.map((data) =>
+        data.id === antiHero.id ? antiHero : data
+      ),
+    };
+  }),
+  on(removeAllAntiHeroState, (state) => {
+    return { ...state, antiHeroes: [] };
+  })
 );
