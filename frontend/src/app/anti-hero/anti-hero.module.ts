@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AntiHeroEffects } from './state/anti-hero.effects';
 import { StoreModule } from '@ngrx/store';
 import { antiHeroReducer } from './state/anti-hero.reducers';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { antiHeroReducer } from './state/anti-hero.reducers';
     ReactiveFormsModule,
     MaterialModule,
     MatCardModule,
+    HttpClientModule,
     EffectsModule.forFeature([AntiHeroEffects]),
     StoreModule.forFeature('antiHeroState', antiHeroReducer), // register our reducers in the store, first param is key second is returned from the createReducer
   ]
